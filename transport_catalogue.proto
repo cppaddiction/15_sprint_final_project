@@ -1,0 +1,77 @@
+syntax = "proto3";
+
+package internal_stuff;
+
+message Connection {
+	string to=1;
+	double distance=2;
+}
+
+message Stop {
+	double lat=1;
+	double lng=2;
+	string name=3;
+	repeated Connection connections=4;
+	string type=5;
+}
+
+message Bus {
+	bool isroundtrip=1;
+	string name=2;
+	repeated string sps=3;
+	string type=4;
+}
+
+message TransportCatalogue {
+	repeated Stop stops=1;
+	repeated Bus buses=2;
+}
+
+message Color_rgb {
+	int32 r=1;
+	int32 g=2;
+	int32 b=3;
+}
+
+message Color_rgba {
+	int32 r=1;
+	int32 g=2;
+	int32 b=3;
+	double opac=4; 
+}
+
+message Color {
+	bool is_monostate=1;
+	bool is_string=2;
+	string str_color=3;
+	bool is_color_rgb=4;
+	Color_rgb rgb_color=5; 
+	bool is_color_rgba=6;
+	Color_rgba rgba_color=7;
+}
+
+message Offset {
+	double dx=1;
+	double dy=2;
+}
+
+message RenderSettings {
+	double w=1;
+	double h=2;
+	double pad=3;
+	double line_w=4;
+	double stop_r=5;
+	int32 bus_l_f_size=6;
+	Offset bus_l_offset=7;
+	int32 stop_l_f_size=8;
+	Offset stop_l_offset=9;
+	Color underlayer_col=10;
+	double underlayer_w=11;
+	repeated Color color_palet=12;
+	
+}
+
+message RouterSettings {
+	int32 b_w_time=1;
+	double b_velo=2;
+}
